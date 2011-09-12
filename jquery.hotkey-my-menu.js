@@ -3,9 +3,7 @@ jQuery.fn.hotkeyMyMenu = function(options) {
 	// @todo handle multiple menus on the same page
 	// @todo handle items which could have had a shortcut if it had came
 	// earlier in the hierarchy
-	// @todo apply class on hotkey in menuItem
 	// @todo pass in exceptions which can't be hotkeyed (since they're already defined by something else, etc)
-	// @todo 
 	var menu = $(this);
 
 	// Default callback, follow a links href attribute
@@ -16,11 +14,13 @@ jQuery.fn.hotkeyMyMenu = function(options) {
 		callback = options.callback;
 	}
 
+	// Name of class applied to the menu items hotkey
 	var highlightClass = 'hotkeyed';
 	if(options && 'string' === typeof options.highlightClass) {
 		highlightClass = options.highlightClass;
 	}
 
+	// Pass in key() or rely on the globally defined one
 	var keyFunction;
 	if(options && 'function' === typeof options.keyFunction) {
 		keyFunction = options.keyFunction;
@@ -28,6 +28,14 @@ jQuery.fn.hotkeyMyMenu = function(options) {
 		keyFunction = window.key;
 	} else {
 		throw "hotkeyMyMenu depends on keymaster (github.com/madrobby/keymaster). If it's not in window.key, pass it in as an option with {keyFunction: key(){}}"
+	}
+
+	// console.log fallback, uses sexy alerts
+	if (typeof console === "undefined" || typeof console.log === "undefined") {
+		console = {};
+		console.log = function(msg) {
+			alert(msg);
+		};
 	}
 
 	var usedHotkeys = [];
