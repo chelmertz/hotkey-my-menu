@@ -66,15 +66,14 @@ jQuery.fn.hotkeyMyMenu = function(options) {
 	});
 
 	// Menu items must have a href and a text content to parse for hotkeys
-	var menuItems = menu.find('a[href!=""]:not(:empty)');
+	var menuItems = menu.find('a').not(':empty');
 	menuItems.each(function(index, element) {
 		var menuItem = $(this);
 		var menuItemText = menuItem.text().trim();
 		var lengthOfMenuItemText = menuItemText.length;
 		var hotkey = menuItemText.charAt(0);
 		var nextTry = 1;
-		var safety = 0;
-		while($.inArray(hotkey.toLowerCase(), usedHotkeys) != '-1' && safety++ < 5) {
+		while($.inArray(hotkey.toLowerCase(), usedHotkeys) != '-1') {
 			hotkey = menuItemText.charAt(nextTry++);
 			if(nextTry > lengthOfMenuItemText) {
 				console.log("Skipping "+menuItemText+" since all letters are already used");
