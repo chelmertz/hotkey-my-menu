@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+	<head>
+		<title>
+			Demo of jquery.hotkeyMyMenu.js
+		</title>
+	</head>
+	<body>
+		<ul id="my_menu">
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Archives</a></li>
+			<li><a href="#">Help</a></li>
+			<li><a href="#">Forums</a></li>
+		</ul>
+		<script type="text/javascript" src="https://raw.github.com/madrobby/keymaster/master/keymaster.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+		<script type="text/javascript" src="jquery.hotkey-my-menu.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$('#my_menu').hotkeyMyMenu();
+		});
+		</script>
+	</body>
+</html>
