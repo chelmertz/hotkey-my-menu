@@ -25,7 +25,6 @@ jQuery.fn.hotkeyMyMenu = function(options) {
 	if(options && 'function' === typeof options.keyFunction) {
 		keyFunction = options.keyFunction;
 	} else if('function' === typeof window.key) {
-		console.log(window.key);
 		keyFunction = window.key;
 	} else {
 		throw "hotkeyMyMenu depends on keymaster (github.com/madrobby/keymaster). If it's not in window.key, pass it in as an option with {keyFunction: key(){}}"
@@ -39,11 +38,23 @@ jQuery.fn.hotkeyMyMenu = function(options) {
 		if(oldTextContent == oldHtmlContent) {
 			// The menuItem does not contain html
 			var newHtml = oldTextContent.replace(hotkey, template.replace('%content', hotkey));
+			menuItem.html(newHtml);
 		} else {
-			throw "not yet implemented";
-			// Do not accidentaly emphase html elements, for example "s" in "<span>Shoutbox</span>"
+			// We need to traverse some HTML to find a text node, since
+			// we do not want to accidentaly emphase html elements,
+			// for example "s" in "<span>Shoutbox</span>"
+			var mainNode = menuItem.get(0);
+			var parentNode;
+			while(3 !== mainNode.nodeType) {
+				parentNode = mainNode;
+				mainNode = mainNode.childNodes[0];
+			}
+			var span = document.createElement('span');
+			span.className = highlightClass;
+			span.innerHTML = hotkey;
+			parentNode.insertBefore(span, mainNode);
+			mainNode.data = mainNode.data.substring(1);
 		}
-		menuItem.html(newHtml);
 		keyFunction(hotkey, function() {
 			menuItem.click();
 		});
