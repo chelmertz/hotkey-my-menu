@@ -22,7 +22,7 @@ Pass in options like this
 $('#my_menu').hotkeyMyMenu({
 	callback: function() {},
 	highlightClass: string,
-        keyFunction: function() {},
+	keyFunction: function() {},
 });
 ```
 
