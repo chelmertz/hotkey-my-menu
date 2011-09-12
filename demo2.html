@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Demo of jquery.hotkeyMyMenu.js</title>
+		<style type="text/css">
+			.hotkeyed {
+				color: red;
+			}
+			#container {
+				border: 2px solid #cecece;
+				height: 400px;
+				width: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="my_menu">
+			<li><a href="readme.md">Readme</a></li>
+		</ul>
+
+		<div id="container"></div>
+		<script type="text/javascript" src="https://raw.github.com/madrobby/keymaster/master/keymaster.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+		<script type="text/javascript" src="jquery.hotkey-my-menu.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$('#my_menu').hotkeyMyMenu({
+				callback: function(a, ev) {
+					ev.preventDefault();
+					$('#container').load(a.attr('href'));
+				}
+			});
+		});
+		</script>
+	</body>
+</html>
