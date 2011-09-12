@@ -66,7 +66,7 @@ jQuery.fn.hotkeyMyMenu = function(options) {
 	});
 
 	// Menu items must have a href and a text content to parse for hotkeys
-	var menuItems = menu.find('a').not(':empty');
+	var menuItems = menu.find('a[href][href!=""]:not(:empty)');
 	menuItems.each(function(index, element) {
 		var menuItem = $(this);
 		var menuItemText = menuItem.text().trim();
