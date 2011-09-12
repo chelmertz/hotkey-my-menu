@@ -1,17 +1,21 @@
 <!doctype html>
 <html>
 	<head>
-		<title>
-			Demo of jquery.hotkeyMyMenu.js
-		</title>
+		<title>Demo of jquery.hotkeyMyMenu.js</title>
+		<style type="text/css">
+			.hotkeyed {
+				color: red;
+			}
+		</style>
 	</head>
 	<body>
 		<ul id="my_menu">
-			<li><a href="#">Home</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Archives</a></li>
-			<li><a href="#">Help</a></li>
-			<li><a href="#">Forums</a></li>
+			<li><a href="demo.html#home">Home</a></li>
+			<li><a href="demo.html#about">About</a></li>
+			<li><a href="demo.html#archives">Archives</a></li>
+			<li><a href="demo.html#help">Help</a></li>
+			<li><a href="demo.html#forums"><strong>Forums</strong></a></li>
+			<li><a>Some link without href</a></li>
 		</ul>
 		<script type="text/javascript" src="https://raw.github.com/madrobby/keymaster/master/keymaster.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
