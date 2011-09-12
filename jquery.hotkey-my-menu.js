@@ -53,7 +53,7 @@ jQuery.fn.hotkeyMyMenu = function(options) {
 			span.className = highlightClass;
 			span.innerHTML = hotkey;
 			parentNode.insertBefore(span, mainNode);
-			mainNode.data = mainNode.data.substring(1);
+			mainNode.nodeValue = mainNode.nodeValue.substring(1);
 		}
 		keyFunction(hotkey, function() {
 			menuItem.click();
